@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Configuration with defaults
-const BASE_URL = process.env.LLM_BASE_URL || 'https://api.siliconflow.cn/v1';
+const BASE_URL = process.env.LLM_BASE_URL || 'https://api.openai.com/v1';
 const API_KEY = process.env.LLM_API_KEY || '';
-const MODEL = process.env.LLM_MODEL || 'Qwen/Qwen2.5-7B-Instruct';
+const MODEL = process.env.LLM_MODEL || 'gpt-4o';
 const DEFAULT_PROMPT = process.env.LLM_DEFAULT_PROMPT || '你是一个有用的AI助手。请直接开始回答用户的问题，不要加入多余的开场白，使回答更加简洁自然。';
 const MAX_CONTEXT_MESSAGES = parseInt(process.env.MAX_CONTEXT_MESSAGES || '10', 10);
 const CONTEXT_EXPIRY_HOURS = parseInt(process.env.CONTEXT_EXPIRY_HOURS || '10', 10);
