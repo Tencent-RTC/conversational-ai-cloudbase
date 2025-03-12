@@ -6,28 +6,22 @@
 - 上下文增强
 - 支持文档引用和溯源
 - 可配置的相似度阈值和最大文档数
-
-1. 安装云函数开发工具：
-```bash
-npm i @cloudbase/functions-framework
-npm i @cloudbase/cli 
-```
-
-2. 进入需要运行的云函数目录：
+- 
+1. 安装项目依赖
 ```bash
 npm i
 ```
 
-3. 本地启动云函数：
+2. 本地启动云函数：
 ```bash
-tcb-ff
+npm run start
 ```
 
 服务将在 http://localhost:3000 启动。
 
-4. 部署云函数
+3. 部署云函数
 ```bash
-tcb cloudrunfunction deploy
+npm run deploy
 ```
 
 测试示例：
