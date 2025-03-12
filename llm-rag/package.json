@@ -16,7 +16,7 @@
     "openai": "^4.86.1"
   },
   "devDependencies": {
-    "@cloudbase/functions-framework": "1.9.7",
+    "@cloudbase/functions-framework": "latest",
     "@cloudbase/cli": "2.6.4"
   }
 }
