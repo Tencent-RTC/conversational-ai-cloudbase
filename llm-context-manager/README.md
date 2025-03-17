@@ -1,6 +1,6 @@
 # LLM context manager 服务
 
-基础的 LLM 对话服务, 提供基础的上下文管理
+基础的 LLM 对话服务, 提供基础的上下文管理.
 
 - 基本的对话上下文管理
 - 支持流式响应（SSE）
@@ -8,24 +8,32 @@
 - 可配置的上下文消息数量限制
 - 支持自定义系统提示词
 
-1. 安装项目依赖
+## 配置项
+
+主要配置参数包括：
+
+- `LLM_BASE_URL`: API 基础 URL
+- `LLM_API_KEY`: API 访问密钥
+- `LLM_MODEL`: 默认使用的模型
+
+## 启动步骤
+
+### 1. 安装项目依赖
+
 ```bash
 npm i
 ```
 
-2. 本地启动云函数：
+### 2. 本地启动云函数
+
 ```bash
 npm run start
 ```
 
-服务将在 http://localhost:3000 启动。
-
-3. 部署云函数
-```bash
-npm run deploy
-```
+服务将在 <http://localhost:3000> 启动。
 
 测试示例：
+
 ```bash
 curl -X POST http://localhost:3000 \
   -H "Content-Type: application/json" \
@@ -38,37 +46,35 @@ curl -X POST http://localhost:3000 \
   }'
 ```
 
+### 3. 部署云函数
 
-## 配置项
-主要配置参数包括：
-- `LLM_BASE_URL`: API 基础 URL
-- `LLM_API_KEY`: API 访问密钥
-- `LLM_MODEL`: 默认使用的模型
-
+```bash
+npm run deploy
+```
 
 ## 对接TRTC-AI对话
+
 部署云函数2.0后，每个函数都会提供一个访问入口：**默认域名**，将默认域名填入到TRTC-AI对话的Playground中, 即刻开启AI对话， 具体操作方式如下。
 ![func-url.png](../images/func-url.png)
 
-
 ### Playground 接入
+
 在大模型接入的配置框中，将CloudBase部署云函数提供的url填入即可使用。
 
-1. 首先进入配置页：https://console.cloud.tencent.com/trtc/conversational-ai
+1. 首先进入配置页：<https://console.cloud.tencent.com/trtc/conversational-ai>
 
-2. STT语音识别配置参考：https://cloud.tencent.com/document/product/647/116056#a9bf6945-84d1-477b-bd88-7ddee15e601f
+2. STT语音识别配置参考：<https://cloud.tencent.com/document/product/647/116056#a9bf6945-84d1-477b-bd88-7ddee15e601f>
 
 3. LLM 配置
    将部署后的云函数2.0生成的的**默认域名**复制到下图的 API Url 框内
-   如：https://sse-openai-proxy-xxxxx-x-xxxx.sh.run.tcloudbase.com/chat/completions
+   如：<https://sse-openai-proxy-xxxxx-x-xxxx.sh.run.tcloudbase.com/chat/completions>
    ![llm-config-playground.png](../images/llm-config-playground.png)
-   参考：https://cloud.tencent.com/document/product/647/116056#2d3404be-252f-4a04-9660-1685ca9e36a1
+   参考：<https://cloud.tencent.com/document/product/647/116056#2d3404be-252f-4a04-9660-1685ca9e36a1>
 
-4. TTS 配置项参考： https://cloud.tencent.com/document/product/647/116056#68abd704-2c53-4c0b-be37-1a63c79d531e
-
-
+4. TTS 配置项参考： <https://cloud.tencent.com/document/product/647/116056#68abd704-2c53-4c0b-be37-1a63c79d531e>
 
 ### API 调用
+
 部署云函数2.0后，每个函数都会提供一个访问入口：**默认域名**，将默认域名填入到TRTC-AI对话的Playground中, 即刻开启AI对话， 具体操作方式如下。
 ![func-url.png](../images/func-url.png)
 
