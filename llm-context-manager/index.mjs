@@ -191,12 +191,13 @@ async function handleStreamingRequest(requestId, taskId, model, context, context
         //     "sender": "ai_xxx",
         //     "receiver": ["user_xxx"],
         //     "payload": {
-        //     "timestamp": 1742365019674,
+        //         "timestamp": 1742365019674,
         //         "model": "xxxx",
         //         "requestId": "w2fwoy60",
         //         "description": "This is the meta info message from TCB demo, help you enrich your App"
         //      }
         // }
+        //  payload is the metainfo sent below, You can send any json message now.
 
         // const metaInfoMessage = {
         //     "type": "meta.info",
