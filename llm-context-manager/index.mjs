@@ -180,6 +180,38 @@ async function handleStreamingRequest(requestId, taskId, model, context, context
         });
         console.log(`[${requestId}] LLM streaming connection established`);
 
+        // If your App needs to send some information use LLM SSE event to the trtc-ai terminal,
+        // you can use this feature: add the meta.info custom message.
+        // TRTC sdk will pass the message through the callback to the terminal, cmdID is 1, type is 10002.
+        // see@https://cloud.tencent.com/document/product/647/32241
+        // example:
+        // receive msg from ai_xxx cmdId: 1 seq: 400658173 data:
+        // {
+        //     "type": 10002,
+        //     "sender": "ai_xxx",
+        //     "receiver": ["user_xxx"],
+        //     "payload": {
+        //     "timestamp": 1742365019674,
+        //         "model": "xxxx",
+        //         "requestId": "w2fwoy60",
+        //         "description": "This is the meta info message from TCB demo, help you enrich your App"
+        //      }
+        // }
+
+        // const metaInfoMessage = {
+        //     "type": "meta.info",
+        //     "metainfo": {
+        //         "timestamp": Date.now(),
+        //         "model": model,
+        //         "requestId": requestId,
+        //         "description": "This is the meta info message from TCB demo, help you enrich your App",
+        //     }
+        // };
+        // sse.send(`data: ${JSON.stringify(metaInfoMessage)}\n\n`);
+
+        // You can remove the code above if you don't need it.
+
+
         let assistantResponse = '';
 
         for await (const chunk of stream) {
