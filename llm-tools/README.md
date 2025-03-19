@@ -51,10 +51,31 @@ curl -X POST http://localhost:3000 \
 npm run deploy
 ```
 
+第一次部署前需注意：
+
+1. 前往[云开发控制台](https://console.cloud.tencent.com/tcb/platform/env)开通环境。
+2. 点击跳转开发平台页面，开通云函数和云托管的权限。
+![func-url.png](../images/setup-cloud-base.png)
+3. 调用云函数的接口，可能会产生少量的**测试费用**。
+
 ## 对接TRTC-AI对话
 
-部署云函数2.0后，每个函数都会提供一个访问入口：**默认域名**，将默认域名填入到TRTC-AI对话的Playground中, 即刻开启AI对话， 具体操作方式如下。
+部署云函数2.0后，每个函数都会提供一个访问入口：**默认域名**。
 ![func-url.png](../images/func-url.png)
+
+### API 调用
+
+在调用启动AI对话接口时（[StartAIConversation](https://cloud.tencent.com/document/api/647/108514)）时，可以将CloudBase部署云函数提供的**默认域名**填到LLMConfig.APIUrl参数中，即可使用LLM服务进行对话。
+
+```json
+{
+   "LLMType": "openai",
+   "Model":"xx",
+   "APIKey":"xx",
+   "APIUrl":"https://sse-openai-proxy-xxxxx-x-xxxx.sh.run.tcloudbase.com/chat/completions",
+   "Streaming": true
+}
+```
 
 ### Playground 接入
 
@@ -71,20 +92,3 @@ npm run deploy
    参考：<https://cloud.tencent.com/document/product/647/116056#2d3404be-252f-4a04-9660-1685ca9e36a1>
 
 4. TTS 配置项参考： <https://cloud.tencent.com/document/product/647/116056#68abd704-2c53-4c0b-be37-1a63c79d531e>
-
-### API 调用
-
-部署云函数2.0后，每个函数都会提供一个访问入口：**默认域名**，将默认域名填入到TRTC-AI对话的Playground中, 即刻开启AI对话， 具体操作方式如下。
-![func-url.png](../images/func-url.png)
-
-在调用启动AI对话接口时（[StartAIConversation](https://cloud.tencent.com/document/api/647/108514)）时，可以将CloudBase部署云函数提供的**默认域名**填到LLMConfig.APIUrl参数中，即可使用LLM服务进行对话。
-
-```json
-{
-   "LLMType": "openai",
-   "Model":"xx",
-   "APIKey":"xx",
-   "APIUrl":"https://sse-openai-proxy-xxxxx-x-xxxx.sh.run.tcloudbase.com/chat/completions",
-   "Streaming": true
-}
-```
